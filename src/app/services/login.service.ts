@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
    getLogin() { 
-    // http service here 
+     let user = 'javajoshua';
+    return  user;
    }
+   
 }
