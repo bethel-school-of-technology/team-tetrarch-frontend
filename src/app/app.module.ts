@@ -9,7 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
-import { loginService } from './services/Login.service';
+import { LoginService } from './services/login.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,7 @@ import { loginService } from './services/Login.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [loginService],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

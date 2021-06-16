@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { navbar } from '../models/navbar';
+import { Navbar } from '../models/navbar';
 
 @Component({
   selector: 'app-navbar',
