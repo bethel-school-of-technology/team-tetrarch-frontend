@@ -1,7 +1,24 @@
-<!--  <navbar> </navbar> -->
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
 
-<h1> Bit Crunch </h1>
+<!-- main app container -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>
-
-
+<!-- credits -->
+<div class="text-center mt-4">
+    <p>
+        <a href="https://github.com/bethel-school-of-technology/team-tetrarch-frontend" target="_top">Bit-Crunch Git Hub Site</a>
+    </p>
+    <p>
+        <a> Dane, Hunter, Joshua, and William </a>
+    </p>
+</div>
