@@ -1,3 +1,4 @@
+- USE THIS Version TO WORK FROM as we have confirmed it working now . USE THIS to build on for now. 
 AngularCrunch
 This project was generated with Angular CLI version 12.0.3.
 
