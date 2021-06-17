@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bit-crunch"
+            "browserTarget": "bit-crunch:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bit-crunch"
+              "browserTarget": "bit-crunch:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bit-crunch"
+            "browserTarget": "bit-crunch:build"
           }
         },
         "test": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bit-crunch"
+    }
+  },
+  "defaultProject": "bit-crunch",
+  "cli": {
+    "analytics": false
+  }
 }
