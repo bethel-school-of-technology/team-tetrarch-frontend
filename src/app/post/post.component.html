@@ -1,0 +1,8 @@
+<p>post works!</p>
+<form>
+    <input type="text" id="a" name="a" #a>
+    <input type="text" id="b" name="b" #b>
+    <label for="c">sample</label>
+    <input type="checkbox" id="c" name="c" #c>
+    <button (click)="submit(a.value, b.value, c.checked)">Post!</button>
+</form>
