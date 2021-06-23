@@ -1,4 +1,4 @@
-export class Item {
+export class Items {
 
     "itemId": number;
     "itemName":  string; 

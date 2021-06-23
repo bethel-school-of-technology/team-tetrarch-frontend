@@ -6,78 +6,57 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
-import { Item } from '@app/_models/item';
+import { Items } from '@app/_models/item';
 
 @Injectable({ providedIn: 'root' })
 export class ItemService {
-    private userSubject: BehaviorSubject<User>;
-    public user: Observable<User>;
+    private itemSubject: BehaviorSubject<Items>;
+    public item: Observable<Items>;
 
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
-        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
-        this.user = this.userSubject.asObservable();
+        this.itemSubject = new BehaviorSubject<Items>(JSON.parse(localStorage.getItem('item')));
+        this.item = this.itemSubject.asObservable();
     }
 
-    public get userValue(): User {
-        return this.userSubject.value;
+    public get itemValue(): Items {
+        return this.itemSubject.value;
     }
 
-    login(username, password) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-                return user;
-            }));
-    }
+   
 
-    logout() {
-        // remove user from local storage and set current user to null
-        localStorage.removeItem('user');
-        this.userSubject.next(null);
-        this.router.navigate(['/account/login']);
-    }
-
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+    register(item: Items) {
+        return this.http.post(`${environment.apiUrl}/items/register`, item);
     }
 
     getAll() {
-        return this.http.get<User[]>(`${environment.apiUrl}/users`);
+        return this.http.get<Items[]>(`${environment.apiUrl}/item`);
     }
 
-    getById(id: string) {
-        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+    getById(itemId: string) {
+        return this.http.get<Items>(`${environment.apiUrl}/item/${itemId}`);
     }
 
-    update(id, params) {
-        return this.http.put(`${environment.apiUrl}/users/${id}`, params)
+    update(itemId, params) {
+        return this.http.put(`${environment.apiUrl}/item/${itemId}`, params)
             .pipe(map(x => {
-                // update stored user if the logged in user updated their own record
-                if (id == this.userValue.userId) {
+                // update stored item if the Seller User in item Management updated their own record
+                if (itemId == this.itemValue.itemId) {
                     // update local storage
-                    const user = { ...this.userValue, ...params };
-                    localStorage.setItem('user', JSON.stringify(user));
+                    const item = { ...this.itemValue, ...params };
+                    localStorage.setItem('item', JSON.stringify(item));
 
-                    // publish updated user to subscribers
-                    this.userSubject.next(user);
+                    // publish updated item to subscribers
+                    this.itemSubject.next(item);
                 }
                 return x;
             }));
     }
 
-    delete(id: string) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`)
-            .pipe(map(x => {
-                // auto logout if the logged in user deleted their own record
-                if (id == this.userValue.userId) {
-                    this.logout();
-                }
-                return x;
-            }));
+    delete(itemId: string) {
+        return this.http.delete(`${environment.apiUrl}/item/${itemId}`)
+            
     }
 }

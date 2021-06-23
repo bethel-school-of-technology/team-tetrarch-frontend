@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LayoutComponent } from './item-layout.component';
-import { ListComponent } from './item-list.component';
-import { AddEditComponent } from './add-edit-item.component';
+import { ItemLayoutComponent } from './item-layout.component';
+import { ItemListComponent } from './item-list.component';
+import { AddEditItemComponent } from './add-edit-item.component';
 
 const routes: Routes = [
     {
-        path: '', component: LayoutComponent,
+        path: '', component: ItemLayoutComponent,
         children: [
-            { path: '', component: ListComponent },
-            { path: 'add', component: AddEditComponent },
-            { path: 'edit/:id', component: AddEditComponent }
+            { path: '', component: ItemListComponent },
+            { path: 'add/:itemId', component: AddEditItemComponent },
+            { path: 'edit/:itemId', component: AddEditItemComponent }
         ]
     }
 ];
@@ -20,4 +20,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class UsersRoutingModule { }
+export class ItemRoutingModule { }
