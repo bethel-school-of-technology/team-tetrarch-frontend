@@ -3,9 +3,9 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th style="width: 30%">First Name</th>
-            <th style="width: 30%">Last Name</th>
-            <th style="width: 30%">Username</th>
+            <th style="width: 30%">Item Name</th>
+            <th style="width: 30%">Console</th>
+            <th style="width: 30%">Item Description</th>
             <th style="width: 10%"></th>
         </tr>
     </thead>
@@ -23,7 +23,7 @@
                 </button>
             </td>
         </tr>
-        <tr *ngIf="!item">
+        <tr *ngIf="!items">
             <td colspan="4" class="text-center">
                 <span class="spinner-border spinner-border-lg align-center"></span>
             </td>
