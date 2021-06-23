@@ -8,4 +8,5 @@
 "city": string;
 "state": string; 
 "isAdmin": boolean; 
+token?:string;
 }
