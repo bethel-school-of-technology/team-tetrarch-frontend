@@ -3,10 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService } from '@app/_services';
+import {  AlertService, ItemService } from '@app/_services';
 
-@Component({ templateUrl: 'add-edit.component.html' })
-export class AddEditComponent implements OnInit {
+@Component({ templateUrl: 'add-edit-item.component.html' })
+export class AddEditItemComponent implements OnInit {
     form: FormGroup;
     id: string;
     isAddMode: boolean;
@@ -17,37 +17,36 @@ export class AddEditComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountService,
+        private itemService: ItemService,
         private alertService: AlertService
     ) {}
 
     ngOnInit() {
-        this.id = this.route.snapshot.params['id'];
+        this.id = this.route.snapshot.params['itemId'];
         this.isAddMode = !this.id;
         
-        // password not required in edit mode
-        const passwordValidators = [Validators.minLength(6)];
+        // change in value not required in edit mode
+        const currencyValidators = [Validators.minLength(6)];
         if (this.isAddMode) {
-            passwordValidators.push(Validators.required);
+            currencyValidators.push(Validators.required);
         }
 
         this.form = this.formBuilder.group({
-            userName: ['', Validators.required],
-            email: ['', Validators.required],
-            storeName: ['', Validators.required],
-            password: ['', passwordValidators]
+            itemName: ['', Validators.required],
+            itemConsole: ['', Validators.required],
+            itemCategory: ['', Validators.required],
+            itemValue: ['', currencyValidators]
         });
 
         if (!this.isAddMode) {
-            this.accountService.getById(this.id)
+            this.itemService.getById(this.id)
                 .pipe(first())
                 .subscribe(x => {
-                    this.f.userName.setValue(x.userName);
-                    this.f.email.setValue(x.email);
-                    this.f.storeName.setValue(x.storeName);
-                    this.f.city.setValue(x.city);
-                    this.f.state.setValue(x.state);
-                    this.f.isAdmin.setValue(x.isAdmin);
+                    this.f.itemName.setValue(x.itemName);
+                    this.f.itemConsole.setValue(x.itemConsole);
+                    this.f.itemCategory.setValue(x.itemCategory);
+                    this.f.itemValue.setValue(x.itemValue);
+                    
                 });
         }
     }
@@ -68,18 +67,18 @@ export class AddEditComponent implements OnInit {
 
         this.loading = true;
         if (this.isAddMode) {
-            this.createUser();
+            this.createItem();
         } else {
-            this.updateUser();
+            this.updateItem();
         }
     }
 
-    private createUser() {
-        this.accountService.register(this.form.value)
+    private createItem() {
+        this.itemService.register(this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('User added successfully', { keepAfterRouteChange: true });
+                    this.alertService.success('Item added successfully', { keepAfterRouteChange: true });
                     this.router.navigate(['.', { relativeTo: this.route }]);
                 },
                 error => {
@@ -88,8 +87,8 @@ export class AddEditComponent implements OnInit {
                 });
     }
 
-    private updateUser() {
-        this.accountService.update(this.id, this.form.value)
+    private updateItem() {
+        this.itemService.update(this.id, this.form.value)
             .pipe(first())
             .subscribe(
                 data => {

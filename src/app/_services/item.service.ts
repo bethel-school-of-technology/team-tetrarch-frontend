@@ -6,9 +6,10 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
+import { Item } from '@app/_models/item';
 
 @Injectable({ providedIn: 'root' })
-export class AccountService {
+export class ItemService {
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
 

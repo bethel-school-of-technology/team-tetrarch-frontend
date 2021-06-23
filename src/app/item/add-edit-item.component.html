@@ -1,0 +1,47 @@
+﻿<h1 *ngIf="isAddMode">Add Items to Sell</h1>
+<h1 *ngIf="!isAddMode">Edit Items</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="itemName">Item Name</label>
+            <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }" />
+            <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
+                <div *ngIf="f.itemName.errors.required">Item Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="itemConsole">Item Console</label>
+            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="itemCategory">Category</label>
+            <input type="text" formControlName="itemCategory" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemCategory.errors }" />
+            <div *ngIf="submitted && f.itemCategory.errors" class="invalid-feedback">
+                <div *ngIf="f.itemCategory.errors.required"> Category is required </div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="itemValue">
+                Item Value
+                <em *ngIf="!isAddMode">(Leave blank to keep the same value)</em>
+            </label>
+            <input type="itemValue" formControlName="itemValue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemValue.errors }" />
+            <div *ngIf="submitted && f.itemValue.errors" class="invalid-feedback">
+                <div *ngIf="f.itemValue.errors.required"> Item Value is required</div>
+                <div *ngIf="f.itemValue.errors.minlength">Item Value must be entered with the format 000.00 </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/users" class="btn btn-link">Cancel</a>
+    </div>
+</form>
