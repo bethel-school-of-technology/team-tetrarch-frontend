@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { User } from '@app/_models';
 import { Items } from '@app/_models/item';
 
 @Injectable({ providedIn: 'root' })
@@ -17,7 +16,7 @@ export class ItemService {
         private router: Router,
         private http: HttpClient
     ) {
-        this.itemSubject = new BehaviorSubject<Items>(JSON.parse(localStorage.getItem('item')));
+        this.itemSubject = new BehaviorSubject<Items>(JSON.parse(localStorage.getItem('itemId')));
         this.item = this.itemSubject.asObservable();
     }
 
@@ -28,11 +27,11 @@ export class ItemService {
    
 
     register(item: Items) {
-        return this.http.post(`${environment.apiUrl}/items/register`, item);
+        return this.http.post(`${environment.apiUrl}/item/register`, item);
     }
 
     getAll() {
-        return this.http.get<Items[]>(`${environment.apiUrl}/item`);
+        return this.http.get<Items[]>(`${environment.apiUrl}/itemId`);
     }
 
     getById(itemId: string) {

@@ -2,7 +2,7 @@
 
 import { AccountService } from './_services';
 import { User } from './_models';
-import { Item } from './_models';
+import { Items } from './_models';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
@@ -18,16 +18,13 @@ export class AppComponent {
     }
 }
 
-Component({ selector: 'app', templateUrl: 'app.component.html' })
-export class AppComponent {
-    item: Items;
+// Component({ selector: 'app', templateUrl: 'app.component.html' })
+// export class AppItemComponent {
+//     item: Items;
 
-    constructor(private ItemService: ItemService) {
-        this.itemService.item.subscribe(x => this.item = x);
-    }
+//     constructor(private itemService: ItemService) {
+//         this.itemService.item.subscribe(x => this.item = x);
+//     }
 
 
-    logout() {
-        this.accountService.logout();
-    }
-}
+  
