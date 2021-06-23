@@ -1,9 +1,13 @@
 export class Items {
 
+
     "itemId": number;
-    "itemName":  string; 
-    "itemConsole": string;  
-    "itemCategory": string; 
+    "itemName":  string;   
+    "itemDescription": string;
+    "itemConsole": string;
+    "itemQuantity": number; 
+    "itemPrice": number;
+    "itemStoreName": string;
     "itemImage": string;
-    "itemValue": number;
+
     }

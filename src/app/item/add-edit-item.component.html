@@ -10,30 +10,30 @@
             </div>
         </div>
         <div class="form-group col">
-            <label for="itemConsole">Item Console</label>
-            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            <label for="itemConsole">Item Console Name</label>
+            <input type="text" formControlName="itemConsole" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemConsole.errors }" />
+            <div *ngIf="submitted && f.itemConsole.errors" class="invalid-feedback">
+                <div *ngIf="f.itemConsole.errors.required">Console Name is required</div>
             </div>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col">
-            <label for="itemCategory">Category</label>
+            <label for="itemDescription">Description</label>
             <input type="text" formControlName="itemCategory" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemCategory.errors }" />
             <div *ngIf="submitted && f.itemCategory.errors" class="invalid-feedback">
                 <div *ngIf="f.itemCategory.errors.required"> Category is required </div>
             </div>
         </div>
         <div class="form-group col">
-            <label for="itemValue">
-                Item Value
-                <em *ngIf="!isAddMode">(Leave blank to keep the same value)</em>
+            <label for="itemPrice">
+                Set Item Price
+                <em *ngIf="!isAddMode">()</em>
             </label>
-            <input type="itemValue" formControlName="itemValue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemValue.errors }" />
-            <div *ngIf="submitted && f.itemValue.errors" class="invalid-feedback">
-                <div *ngIf="f.itemValue.errors.required"> Item Value is required</div>
-                <div *ngIf="f.itemValue.errors.minlength">Item Value must be entered with the format 000.00 </div>
+            <input type="itemPrice" formControlName="itemPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemPrice.errors }" />
+            <div *ngIf="submitted && f.itemPrice.errors" class="invalid-feedback">
+                <div *ngIf="f.itemPrice.errors.required"> Item Price is required</div>
+                <div *ngIf="f.itemPrice.errors.minlength">Item Value must be entered with the format 000.00 </div>
             </div>
         </div>
     </div>

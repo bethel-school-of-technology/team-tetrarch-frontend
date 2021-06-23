@@ -7,6 +7,5 @@
 "storeName": string; 
 "city": string;
 "state": string; 
-"isAdmin": boolean; 
-token?:string;
+"isAdmin": number; 
 }
