@@ -31,7 +31,7 @@ export class ItemService {
     }
 
     getAll() {
-        return this.http.get<Items[]>(`${environment.apiUrl}/itemId`);
+        return this.http.get<Items[]>(`${environment.apiUrl}/api/Items`);
     }
 
     getById(itemId: string) {
