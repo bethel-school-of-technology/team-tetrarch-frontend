@@ -22,7 +22,7 @@ export class AddEditItemComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.id = this.route.snapshot.params['itemId'];
+        this.id = this.route.snapshot.params['id'];
         this.isAddMode = !this.id;
         
         // change in value not required in edit mode
@@ -34,7 +34,9 @@ export class AddEditItemComponent implements OnInit {
         this.form = this.formBuilder.group({
             itemName: ['', Validators.required],
             itemConsole: ['', Validators.required],
-            itemCategory: ['', Validators.required],
+            itemDescription: ['', Validators.required],
+            itemQuantity: ['', Validators.required],
+            itemStoreName: ['', Validators.required],
             itemValue: ['', currencyValidators]
         });
 
@@ -44,8 +46,10 @@ export class AddEditItemComponent implements OnInit {
                 .subscribe(x => {
                     this.f.itemName.setValue(x.itemName);
                     this.f.itemConsole.setValue(x.itemConsole);
-                    this.f.itemCategory.setValue(x.itemCategory);
-                    this.f.itemValue.setValue(x.itemValue);
+                    this.f.itemDescription.setValue(x.itemDescription);
+                    this.f.itemQuantity.setValue(x.itemQuantity);
+                    this.f.itemStoreName.setValue(x.itemStoreName);
+                    this.f.itemPrice.setValue(x.itemPrice);
                     
                 });
         }

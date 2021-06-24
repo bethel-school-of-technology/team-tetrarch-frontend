@@ -35,11 +35,11 @@ export class ItemService {
     }
 
     getById(itemId: string) {
-        return this.http.get<Items>(`${environment.apiUrl}/item/${itemId}`);
+        return this.http.get<Items>(`${environment.apiUrl}/api/Items/${itemId}`);
     }
 
     update(itemId, params) {
-        return this.http.put(`${environment.apiUrl}/item/${itemId}`, params)
+        return this.http.put(`${environment.apiUrl}/api/Items/${itemId}`, params)
             .pipe(map(x => {
                 // update stored item if the Seller User in item Management updated their own record
                 if (itemId == this.itemValue.itemId) {
@@ -55,7 +55,7 @@ export class ItemService {
     }
 
     delete(itemId: string) {
-        return this.http.delete(`${environment.apiUrl}/item/${itemId}`)
+        return this.http.delete(`${environment.apiUrl}/api/Items/${itemId}`)
             
     }
 }
