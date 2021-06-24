@@ -32,6 +32,41 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="email">email</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">email is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="storeName">storeName</label>
+                <input type="text" formControlName="storeName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.storeName.errors }" />
+                <div *ngIf="submitted && f.storeName.errors" class="invalid-feedback">
+                    <div *ngIf="f.storeName.errors.required"> Store Name is not required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">city</label>
+                <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+                <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                    <div *ngIf="f.city.errors.required">city is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" formControlName="state" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.state.errors }" />
+                <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                    <div *ngIf="f.state.errors.required">State is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="isAdmin">Admin Profile? </label>
+                <input type="text" formControlName="isAdmin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.isAdmin.errors }" />
+                <div *ngIf="submitted && f.isAdmin.errors" class="invalid-feedback">
+                    <div *ngIf="f.isAdmin.errors.required">Enter 0 for Buyer / Seller . Enter 1 to apply for Admin Privilege</div>
+                </div>
+            </div>
+            <div class="form-group">
                 <button [disabled]="loading" class="btn btn-primary">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Register
