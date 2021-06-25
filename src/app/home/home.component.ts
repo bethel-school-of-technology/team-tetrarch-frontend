@@ -1,5 +1,4 @@
 ﻿import { Component } from '@angular/core';
-
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
 

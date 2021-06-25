@@ -25,7 +25,7 @@ export class AccountService {
     }
 
     login(userName, password) {
-        return this.http.post<User>(`${environment.apiUrl}/api/Users/authenticate`, { userName, password })
+        return this.http.post<User>(`${environment.apiUrl}/api/Users/userName`, { userName, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
@@ -42,7 +42,7 @@ export class AccountService {
     }
 
     register(user: User) {
-        return this.http.post(`${environment.apiUrl}/api/Users/register`, user);
+        return this.http.post(`${environment.apiUrl}/api/Users`, user);
     }
 
     getAll() {
@@ -54,7 +54,7 @@ export class AccountService {
     }
 
     update(id, params) {
-        return this.http.put(`${environment.apiUrl}/users/${id}`, params)
+        return this.http.put(`${environment.apiUrl}/api/users/${id}`, params)
             .pipe(map(x => {
                 // update stored user if the logged in user updated their own record
                 if (id == this.userValue.userId) {

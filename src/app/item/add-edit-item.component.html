@@ -13,10 +13,11 @@
             <label for="itemConsole">Item Console Name</label>
             <input type="text" formControlName="itemConsole" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemConsole.errors }" />
             <div *ngIf="submitted && f.itemConsole.errors" class="invalid-feedback">
-                <div *ngIf="f.itemConsole.errors.required">Console Name is required</div>
+                <div *ngIf="f.itemConsole.errors.required"> Console Name is required </div>
             </div>
         </div>
     </div>
+
     <div class="form-row">
         <div class="form-group col">
             <label for="itemDescription">Description</label>
@@ -27,15 +28,16 @@
         </div>
         <div class="form-row">
             <div class="form-group col">
-                <label for="itemStoreName">Store Name</label>
+                <label for="itemStoreName"> Store Name </label>
                 <input type="text" formControlName="itemStoreName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemStoreName.errors }" />
                 <div *ngIf="submitted && f.itemStoreName.errors" class="invalid-feedback">
                     <div *ngIf="f.itemStoreName.errors.required"> Store Name is not required </div>
                 </div>
             </div>
+        </div>
         <div class="form-row">
              <div class="form-group col">
-                    <label for="itemQuantity">Quantity</label>
+                    <label for="itemQuantity"> Quantity </label>
                     <input type="text" formControlName="itemQuantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemQuantity.errors }" />
                     <div *ngIf="submitted && f.itemQuantity.errors" class="invalid-feedback">
                         <div *ngIf="f.itemQuantity.errors.required"> Quantity is required </div>
@@ -44,7 +46,7 @@
         <div class="form-group col">
             <label for="itemPrice">
                 Set Item Price
-                <em *ngIf="!isAddMode">()</em>
+                <em *ngIf="!isAddMode">()</em> 
             </label>
             <input type="itemPrice" formControlName="itemPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemPrice.errors }" />
             <div *ngIf="submitted && f.itemPrice.errors" class="invalid-feedback">
@@ -53,11 +55,14 @@
             </div>
         </div>
     </div>
+
     <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Save
+            Save Item
         </button>
-        <a routerLink="/users" class="btn btn-link">Cancel</a>
+        <a routerLink="/api/Users" class="btn btn-link">Cancel</a>
     </div>
+</div>
+
 </form>
