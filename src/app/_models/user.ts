@@ -1,11 +1,11 @@
 ﻿export class User {
 
-"userId": string;
-"userName":  string; 
-"password": string; 
-"email": string;
-"storeName": string; 
-"city": string;
-"state": string; 
-"isAdmin": number; 
+"UserId": string;
+"UserName":  string; 
+"Password": string; 
+"Email": string;
+"StoreName": string; 
+"City": string;
+"State": string; 
+"IsAdmin": number; 
 }
