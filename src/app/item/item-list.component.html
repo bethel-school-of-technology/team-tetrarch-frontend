@@ -1,0 +1,37 @@
+﻿<h1> Items for Sale </h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2"> Add Item </a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 15%">Item Name</th>
+            <th style="width: 15%">Console</th>
+            <th style="width: 15%">Item Description</th>
+            <th style="width: 15%">Item Price</th>
+            <th style="width: 15%">Item Quantity</th>
+            <th style="width: 15%">Store Name</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td>{{item.itemName}}</td>
+            <td>{{item.console}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.storeName}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{item.itemId}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteItem(item.itemId)" class="btn btn-sm btn-danger btn-delete-item" [disabled]="item.isDeleting">
+                    <span *ngIf="item.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!item.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!items">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
