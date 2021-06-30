@@ -11,11 +11,18 @@ export class AppComponent {
     constructor(private accountService: AccountService) {
         this.accountService.user.subscribe(x => this.user = x);
     }
+    
+    // items: Items;
+
+    // constructor(private accountService: AccountService) {
+    //     this.accountService.items.subscribe(x => this.items = x);
+    // }
 
 
     logout() {
         this.accountService.logout();
     }
+
 }
 
 // Component({ selector: 'app', templateUrl: 'app.component.html' })
