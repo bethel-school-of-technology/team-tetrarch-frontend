@@ -26,7 +26,7 @@ export class AddEditItemComponent implements OnInit {
         this.isAddMode = !this.id;
         
         // change in value not required in edit mode
-        const currencyValidators = [Validators.minLength(6)];
+        const currencyValidators = [Validators.minLength(1)];
         if (this.isAddMode) {
             currencyValidators.push(Validators.required);
         }
@@ -78,12 +78,13 @@ export class AddEditItemComponent implements OnInit {
     }
 
     private createItem() {
+        console.log(this.form.value)
         this.itemService.register(this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
                     this.alertService.success('Item added successfully', { keepAfterRouteChange: true });
-                    this.router.navigate(['.', { relativeTo: this.route }]);
+                    this.router.navigate(['', { relativeTo: this.route }]);
                 },
                 error => {
                     this.alertService.error(error);

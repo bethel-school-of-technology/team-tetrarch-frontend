@@ -48,6 +48,7 @@
                 Set Item Price
                 <em *ngIf="!isAddMode">()</em> 
             </label>
+            <span> $</span>
             <input type="itemPrice" formControlName="itemPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemPrice.errors }" />
             <div *ngIf="submitted && f.itemPrice.errors" class="invalid-feedback">
                 <div *ngIf="f.itemPrice.errors.required"> Item Price is required</div>

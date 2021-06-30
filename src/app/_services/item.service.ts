@@ -27,7 +27,16 @@ export class ItemService {
    
 
     register(item: Items) {
-        return this.http.post(`${environment.apiUrl}/item/register`, item);
+        let newItem = {
+            ItemName: item.itemName,
+            Description: item.itemDescription,
+            Console: item.itemConsole,
+            Quantity: item.itemQuantity,
+            StoreName: item.itemStoreName,
+            Price: item.itemPrice
+
+        }
+        return this.http.post(`${environment.apiUrl}/api/Items`, newItem);
     }
 
     getAll() {
