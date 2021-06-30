@@ -32,10 +32,13 @@ export class AddEditComponent implements OnInit {
         }
 
         this.form = this.formBuilder.group({
-            userName: ['', Validators.required],
+            username: ['', Validators.required],
             email: ['', Validators.required],
             storeName: ['', Validators.required],
-            password: ['', passwordValidators]
+            password: ['', passwordValidators],
+            city: ['', Validators.required],
+            state: ['', Validators.required],
+            isAdmin: ['', Validators.required],
         });
 
         if (!this.isAddMode) {

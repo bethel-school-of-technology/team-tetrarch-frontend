@@ -10,7 +10,7 @@ const routes: Routes = [
         path: '', component: ItemLayoutComponent,
         children: [
             { path: '', component: ItemListComponent },
-            { path: 'add/:itemId', component: AddEditItemComponent },
+            { path: 'add', component: AddEditItemComponent },
             { path: 'edit/:itemId', component: AddEditItemComponent }
         ]
     }

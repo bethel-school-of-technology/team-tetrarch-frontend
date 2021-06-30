@@ -37,7 +37,7 @@ export class AddEditItemComponent implements OnInit {
             itemDescription: ['', Validators.required],
             itemQuantity: ['', Validators.required],
             itemStoreName: ['', Validators.required],
-            itemValue: ['', currencyValidators]
+            itemPrice: ['', currencyValidators]
         });
 
         if (!this.isAddMode) {
