@@ -18,8 +18,6 @@ export class ItemListComponent implements OnInit {
     }
 
     deleteItem(id: string) {
-        const user = this.items.find(x => x.id === id);
-        //this.items.isDeleting = true;
         this.itemService.delete(id)
             .pipe(first())
             .subscribe(() => {
