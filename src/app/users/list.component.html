@@ -3,17 +3,27 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th style="width: 30%">First Name</th>
-            <th style="width: 30%">Last Name</th>
-            <th style="width: 30%">Username</th>
-            <th style="width: 10%"></th>
+            <th style="width: 11%">User Id</th>
+            <th style="width: 11%">User Name</th>
+            <th style="width: 11%">Password</th>
+            <th style="width: 11%">Email</th>
+            <th style="width: 11%">Store Name</th>
+            <th style="width: 11%">City</th>
+            <th style="width: 11%">State</th>
+            <th style="width: 11%">Administrator 1/0</th>
+            <th style="width: 12%"></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let user of users">
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}}</td>
+            <td>{{user.userId}}</td>
             <td>{{user.userName}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.storeName}}</td>
+            <td>{{user.city}}</td>
+            <td>{{user.state}}</td>
+            <td>{{user.isAdmin}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
                 <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
