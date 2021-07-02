@@ -1,17 +1,17 @@
 
-.form-style-8{
+.form-{
 	font-family: 'Open Sans Condensed', arial, sans;
 	width: 500px;
 	padding: 30px;
-	background: #FFFFFF;
+	background: #5d8fbe;
 	margin: 50px auto;
 	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
 	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
 	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
 
 }
-.form-style-8 h2{
-	background: #4D4D4D;
+.form h2{
+	background: #5d8fbe;
 	text-transform: uppercase;
 	font-family: 'Open Sans Condensed', sans-serif;
 	color: #797979;
@@ -21,9 +21,9 @@
 	margin: -30px -30px 30px -30px;
 }
 
-.form-style-8 input,
-.form-style-8 textarea,
-.form-style-8 select 
+.form input,
+.form textarea,
+.form select 
 {
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -39,16 +39,16 @@
 	font: 16px Arial, Helvetica, sans-serif;
 	height: 45px;
 }
-.form-style-8 textarea{
+.form textarea{
 	resize:none;
 	overflow: hidden;
 }
-.form-style-8 input[type="button"], 
-.form-style-8 input[type="submit"]{
+.form input[type="button"], 
+.form input[type="submit"]{
 	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
 	box-shadow: inset 0px 1px 0px 0px #45D6D6;
-	background-color: #2CBBBB;
+	background-color: #5d8fbe;
 	border: 1px solid #27A0A0;
 	display: inline-block;
 	cursor: pointer;
@@ -59,8 +59,8 @@
 	text-decoration: none;
 	text-transform: uppercase;
 }
-.form-style-8 input[type="button"]:hover, 
-.form-style-8 input[type="submit"]:hover {
+.form input[type="button"]:hover, 
+.form input[type="submit"]:hover {
 	background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
-	background-color:#34CACA;
+	background-color:#5d8fbe;
 }
