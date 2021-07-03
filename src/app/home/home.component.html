@@ -4,26 +4,18 @@
         <p>You're logged in to Bit Crunch !!</p>
         <p><a routerLink="/users">As an Administrator you can Manage Users Here</a></p>
         
-        <ng-template [ngIf]="user.IsAdmin=1" >
+        <!-- <ng-template [ngIf]="user.IsAdmin=1" >
             <div class="users-list">
-                <p><a routerLink="/users">As an Administrator you can Manage Users Here</a></p>
-            </div>
-           </ng-template>
+                <p><a routerLink="/users">As an Administrator you can Manage Users Here</a></p> -->
+            <!-- </div>
+           </ng-template> -->
            
         
 
         <p><a routerLink="/items"> Shop! </a></p>
+        
         <br><br><br><br><br>
     </div>
 </div>
 
 
-<ng-template [ngIf]="user.isAdmin" [ngIfElse]="loading">
-    <div class="users-list">
-        <p><a routerLink="/users">As an Administrator you can Manage Users Here</a></p>
-    </div>
-   </ng-template>
-   
-   <ng-template #loading>
-    <div>Feel Free to Shop around! </div>
-   </ng-template>
