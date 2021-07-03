@@ -23,23 +23,43 @@ export class AddEditComponent implements OnInit {
 
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
-        this.isAddMode = !this.id;
+        var id = parseInt(this.id);
+        if (Object.is(id, NaN)) {
+            this.isAddMode = true;
+            console.log("add mode is on")
+        }
+        else {
+            this.isAddMode = false;
+            console.log("add mode is off")
+        }
         
         // password not required in edit mode
         const passwordValidators = [Validators.minLength(6)];
         if (this.isAddMode) {
             passwordValidators.push(Validators.required);
+            this.form = this.formBuilder.group({
+                userName: ['', Validators.required],
+                email: ['', Validators.required],
+                storeName: ['', Validators.required],
+                password: ['', passwordValidators],
+                city: ['', Validators.required],
+                state: ['', Validators.required],
+                isAdmin: ['', Validators.required],
+            });
+        }
+        else {
+            this.form = this.formBuilder.group({
+                userId: parseInt(this.id),
+                userName: ['', Validators.required],
+                email: ['', Validators.required],
+                storeName: ['', Validators.required],
+                password: ['', passwordValidators],
+                city: ['', Validators.required],
+                state: ['', Validators.required],
+                isAdmin: ['', Validators.required],
+            });
         }
 
-        this.form = this.formBuilder.group({
-            username: ['', Validators.required],
-            email: ['', Validators.required],
-            storeName: ['', Validators.required],
-            password: ['', passwordValidators],
-            city: ['', Validators.required],
-            state: ['', Validators.required],
-            isAdmin: ['', Validators.required],
-        });
 
         if (!this.isAddMode) {
             this.accountService.getById(this.id)
@@ -69,6 +89,8 @@ export class AddEditComponent implements OnInit {
             return;
         }
 
+
+
         this.loading = true;
         if (this.isAddMode) {
             this.createUser();
@@ -92,7 +114,7 @@ export class AddEditComponent implements OnInit {
     }
 
     private updateUser() {
-        this.accountService.update(this.id, this.form.value)
+        this.accountService.update(parseInt(this.id), this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
@@ -103,5 +125,6 @@ export class AddEditComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+                console.log(this.form.value);
     }
 }
