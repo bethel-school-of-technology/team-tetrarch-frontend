@@ -3,6 +3,7 @@
 
 <HEAD>
     <TITLE>Result Page </TITLE>
+    <link rel="stylesheet" type="text/css" href="./result.component.css">
     <META http-equiv=Content-Type content="text/html; charset=iso-
 8859-1">
     <META content="MSHTML 6.00.2800.1126" name=GENERATOR>
@@ -12,15 +13,30 @@
     <TABLE cellSpacing=0 cellPadding=0 width=772 border=0>
         <TBODY>
             <TR>
-                <img src="https://www.logolounge.com/article_images/artpics/art_033117_side01.png" width="20"
-                    height="20" />
-                <form id="form" role="search">
-                    <input type="search" id="query" name="q" placeholder="Search..."
-                        aria-label="Search through site content">
-                    <button>Search</button>
-                </form>
-                <div class="result">
+    <!-- input tag -->
+    <input id="searchbar" onkeyup="search_games()" type="text"
+        name="search" placeholder="Search Games..">
+      
+    <!-- ordered list -->
+    <ol id='list'>
+        <ul class="listgame"> <a href="./Games/snakegame.html">Snake</a></ul>
+        <ul class="listgame"> <a href="./Games/tetrisgame.html">Tetris</a></ul>
+        <ul class="listgame">Super Mario Bros. </ul>
+        <ul class="listgame">Donkey Kong</ul>
+        <ul class="listgame">Dig Dug</ul>
+        <ul class="listgame">Pac-Man</ul>
+        <ul class="listgame">Frogger</ul>
+        <ul class="listgame">Pong</ul>
+        <ul class="listgame">Dr. Mario</ul>
+        <ul class="listgame">Mega Man</ul>
+        <ul class="listgame">Tekken</ul>
+    </ol>
+      
+    <!-- linking javscript -->
+    <script src="./result.component.js"></script>
                 
+
+
                 <!-- <TD vAlign=top width=772 height=234>
                     <TABLE borderColor=#cccccc cellSpacing=1 cellPadding=1 width="100%" border=0>
                         <TBODY>
