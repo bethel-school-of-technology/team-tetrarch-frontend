@@ -19,6 +19,7 @@ export class ListComponent implements OnInit {
     }
 
     deleteUser(id: string) {{
+        
         this.accountService.delete(id)
             .pipe(first())
             .subscribe(() => {
