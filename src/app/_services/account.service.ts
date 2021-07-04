@@ -53,20 +53,9 @@ export class AccountService {
         return this.http.get<User>(`${environment.apiUrl}/api/Users/${id}`);
     }
 
-    update(id, params) {
-        return this.http.put<User>(`${environment.apiUrl}/api/Users/${id}`, params)
-            .pipe(map(x => {
-                // update stored user if the logged in user updated their own record
-                if (id == this.userValue.UserId) {
-                    // update local storage
-                    const user = { ...this.userValue, ...params };
-                    localStorage.setItem('user', JSON.stringify(user));
-
-                    // publish updated user to subscribers
-                    this.userSubject.next(user);
-                }
-                return x;
-            }));
+    update(id, user: User) {
+        console.log(id, user);
+        return this.http.put(`${environment.apiUrl}/api/Users/${id}`, user);
     }
 
     delete(id: string) {
