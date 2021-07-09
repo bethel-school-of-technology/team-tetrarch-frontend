@@ -43,15 +43,15 @@ export class ItemService {
         return this.http.get<Items[]>(`${environment.apiUrl}/api/Items`);
     }
 
-    getById(itemId: string) {
-        return this.http.get<Items>(`${environment.apiUrl}/api/Items/${itemId}`);
+    getById(itemID: string) {
+        return this.http.get<Items>(`${environment.apiUrl}/api/Items/${itemID}`);
     }
 
-    update(itemId, params) {
-        return this.http.put(`${environment.apiUrl}/api/Items/${itemId}`, params)
+    update(itemID, params) {
+        return this.http.put(`${environment.apiUrl}/api/Items/${itemID}`, params)
             .pipe(map(x => {
                 // update stored item if the Seller User in item Management updated their own record
-                if (itemId == this.itemValue.itemID) {
+                if (itemID == this.itemValue.itemID) {
                     // update local storage
                     const item = { ...this.itemValue, ...params };
                     localStorage.setItem('item', JSON.stringify(item));
@@ -63,8 +63,8 @@ export class ItemService {
             }));
     }
 
-    delete(itemId: string) {
-        return this.http.delete(`${environment.apiUrl}/api/Items/${itemId}`)
+    delete(itemID: string) {
+        return this.http.delete(`${environment.apiUrl}/api/Items/${itemID}`)
             
     }
 }

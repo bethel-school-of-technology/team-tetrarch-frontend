@@ -22,7 +22,7 @@ export class AddEditItemComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.id = this.route.snapshot.params['itemId'];
+        this.id = this.route.snapshot.params['itemID'];
         var id = parseInt(this.id);
         if (Object.is(id, NaN)) {
             this.isAddMode = true;
