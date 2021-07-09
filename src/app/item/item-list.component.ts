@@ -1,6 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-
 import { ItemService } from '@app/_services';
 
 @Component({ templateUrl: 'item-list.component.html' })
@@ -17,11 +16,12 @@ export class ItemListComponent implements OnInit {
             });
     }
 
-    deleteItem(id: string) {
+    deleteItem(id: string) {{
         this.itemService.delete(id)
             .pipe(first())
             .subscribe(() => {
                 this.items = this.items.filter(x => x.id !== id) 
             });
-    }
-}
+    };
+    location.reload();  
+}}

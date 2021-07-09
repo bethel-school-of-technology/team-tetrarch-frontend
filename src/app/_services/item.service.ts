@@ -16,7 +16,7 @@ export class ItemService {
         private router: Router,
         private http: HttpClient
     ) {
-        this.itemSubject = new BehaviorSubject<Items>(JSON.parse(localStorage.getItem('itemId')));
+        this.itemSubject = new BehaviorSubject<Items>(JSON.parse(localStorage.getItem('itemID')));
         this.item = this.itemSubject.asObservable();
     }
 
@@ -51,7 +51,7 @@ export class ItemService {
         return this.http.put(`${environment.apiUrl}/api/Items/${itemId}`, params)
             .pipe(map(x => {
                 // update stored item if the Seller User in item Management updated their own record
-                if (itemId == this.itemValue.itemId) {
+                if (itemId == this.itemValue.itemID) {
                     // update local storage
                     const item = { ...this.itemValue, ...params };
                     localStorage.setItem('item', JSON.stringify(item));

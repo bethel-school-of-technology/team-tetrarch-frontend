@@ -9,7 +9,7 @@
             <th style="width: 15%">Item Price</th>
             <th style="width: 15%">Item Quantity</th>
             <th style="width: 15%">Store Name</th>
-            <th style="width: 10%"></th>
+            <th style="width: 10%">Item Id</th>
         </tr>
     </thead>
     <tbody>
@@ -20,9 +20,10 @@
             <td>{{item.price}}</td>
             <td>{{item.quantity}}</td>
             <td>{{item.storeName}}</td>
+            <td>{{item.itemID}}</td>
             <td style="white-space: nowrap">
-                <a routerLink="edit/{{item.itemId}}" class="btn btn-sm btn-primary mr-1">Edit</a>
-                <button (click)="deleteItem(item.itemId)" class="btn btn-sm btn-danger btn-delete-item" [disabled]="item.isDeleting">
+                <a routerLink="add/{{item.itemID}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteItem(item.itemID)" class="btn btn-sm btn-danger btn-delete-item" [disabled]="item.isDeleting">
                     <span *ngIf="item.isDeleting" class="spinner-border spinner-border-sm"></span>
                     <span *ngIf="!item.isDeleting">Delete</span>
                 </button>

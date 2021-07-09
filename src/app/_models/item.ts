@@ -1,7 +1,7 @@
 export class Items {
 
 
-    "itemId": number;
+    "itemID": number;
     "itemName":  string;   
     "itemDescription": string;
     "itemConsole": string;

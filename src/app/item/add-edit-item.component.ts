@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import {  AlertService, ItemService } from '@app/_services';
+import { ItemService, AlertService } from '@app/_services';
 
 @Component({ templateUrl: 'add-edit-item.component.html' })
 export class AddEditItemComponent implements OnInit {
@@ -22,25 +22,31 @@ export class AddEditItemComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.id = this.route.snapshot.params['id'];
-        this.isAddMode = !this.id;
-        
-        // change in value not required in edit mode
-        const currencyValidators = [Validators.minLength(1)];
-        if (this.isAddMode) {
-            currencyValidators.push(Validators.required);
+        this.id = this.route.snapshot.params['itemId'];
+        var id = parseInt(this.id);
+        if (Object.is(id, NaN)) {
+            this.isAddMode = true;
+            console.log("add mode is on")
+        }
+        else {
+            this.isAddMode = false;
+            console.log("add mode is off")
         }
 
-        this.form = this.formBuilder.group({
-            itemName: ['', Validators.required],
-            itemConsole: ['', Validators.required],
-            itemDescription: ['', Validators.required],
-            itemQuantity: ['', Validators.required],
-            itemStoreName: ['', Validators.required],
-            itemPrice: ['', currencyValidators]
-        });
-
-        if (!this.isAddMode) {
+// change in value not required in edit mode
+const currencyValidators = [Validators.minLength(1)];
+        if (this.isAddMode) {
+            currencyValidators.push(Validators.required);
+            this.form = this.formBuilder.group({
+                itemName: ['', Validators.required],
+                itemConsole: ['', Validators.required],
+                itemDescription: ['', Validators.required],
+                itemQuantity: ['', Validators.required],
+                itemStoreName: ['', Validators.required],
+                itemPrice: ['', currencyValidators]
+            });
+        }
+        else {
             this.itemService.getById(this.id)
                 .pipe(first())
                 .subscribe(x => {
@@ -50,8 +56,7 @@ export class AddEditItemComponent implements OnInit {
                     this.f.itemQuantity.setValue(x.itemQuantity);
                     this.f.itemStoreName.setValue(x.itemStoreName);
                     this.f.itemPrice.setValue(x.itemPrice);
-                    
-                });
+            });
         }
     }
 
@@ -69,6 +74,8 @@ export class AddEditItemComponent implements OnInit {
             return;
         }
 
+
+
         this.loading = true;
         if (this.isAddMode) {
             this.createItem();
@@ -78,13 +85,13 @@ export class AddEditItemComponent implements OnInit {
     }
 
     private createItem() {
-        console.log(this.form.value)
+        console.log('created item')
         this.itemService.register(this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
                     this.alertService.success('Item added successfully', { keepAfterRouteChange: true });
-                    this.router.navigate(['', { relativeTo: this.route }]);
+                    this.router.navigate(['.', { relativeTo: this.route }]);
                 },
                 error => {
                     this.alertService.error(error);
@@ -93,16 +100,17 @@ export class AddEditItemComponent implements OnInit {
     }
 
     private updateItem() {
-        this.itemService.update(this.id, this.form.value)
+        this.itemService.update(parseInt(this.id), this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
                     this.alertService.success('Update successful', { keepAfterRouteChange: true });
-                    this.router.navigate(['..', { relativeTo: this.route }]);
+                    this.router.navigate(['.', { relativeTo: this.route }]);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+                console.log(this.form.value);
     }
 }
