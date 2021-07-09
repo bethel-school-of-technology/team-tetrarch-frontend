@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
     <form action="../result.component.html">
         <input type="submit" value="Go back to searches" />
     </form>
-  <title>Basic Pong HTML Game</title>
   
   <meta charset="UTF-8">
   <style>
@@ -20,8 +16,7 @@
     justify-content: center;
   }
   </style>
-</head>
-<body>
+
 <canvas width="750" height="585" id="game"></canvas>
 <script>
 const canvas = document.getElementById('game');
@@ -40,7 +35,7 @@ const leftPaddle = {
   width: grid,
   height: paddleHeight,
 
-  // paddle velocity
+  // paddle speed
   dy: 0
 };
 const rightPaddle = {
@@ -50,7 +45,7 @@ const rightPaddle = {
   width: grid,
   height: paddleHeight,
 
-  // paddle velocity
+  // paddle speed
   dy: 0
 };
 const ball = {
@@ -144,15 +139,15 @@ function loop() {
     ball.x = rightPaddle.x - ball.width;
   }
 
-  // draw ball
+  // ball
   context.fillRect(ball.x, ball.y, ball.width, ball.height);
 
-  // draw walls
+  // walls
   context.fillStyle = 'lightgrey';
   context.fillRect(0, 0, canvas.width, grid);
   context.fillRect(0, canvas.height - grid, canvas.width, canvas.height);
 
-  // draw dotted line down the middle
+  // dotted line down the middle
   for (let i = grid; i < canvas.height - grid; i += grid * 2) {
     context.fillRect(canvas.width / 2 - grid / 2, i, grid, grid);
   }
@@ -193,5 +188,3 @@ document.addEventListener('keyup', function(e) {
 // start the game
 requestAnimationFrame(loop);
 </script>
-</body>
-</html>

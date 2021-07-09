@@ -15,6 +15,7 @@ const routes: Routes = [
     { path: 'account', loadChildren: accountModule },
     { path: 'result', component: ResultComponent},
 
+
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

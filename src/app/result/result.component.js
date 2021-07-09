@@ -13,5 +13,3 @@ function search_games() {
         }
     }
 }
-
-
