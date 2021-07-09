@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import {ResultComponent} from './result/result.component'
 import { HomeComponent } from './home';
 import { AuthGuard } from './_helpers';
 
@@ -13,6 +13,7 @@ const routes: Routes = [
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'item', loadChildren: itemModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
+    { path: 'result', component: ResultComponent},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
